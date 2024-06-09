@@ -22,9 +22,12 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 	let credit = EMOJI_CREDITS[emojiTrueName];
 	if (credit) {
 		if (!credit.original_author || credit.original_author.length == 0) errors.push('missing original_author');
-		//make sure date matches yyyy-mm-dd
-		if (!credit.date_of_creation || credit.date_of_creation.length == 0) errors.push('missing date_of_creation');
-		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.date_of_creation)) errors.push('date is not in yyyy-mm-dd format');
+
+		if (!credit.created_on || credit.created_on.length == 0) errors.push('missing created_on date');
+		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.created_on)) errors.push('created_on date is not in yyyy-mm-dd format');
+
+		if (!credit.modified_on || credit.modified_on.length == 0) errors.push('missing modified_on date');
+		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.modified_on)) errors.push('modified_on date is not in yyyy-mm-dd format');
 	} else
 		errors.push('missing credit');
 
