@@ -30,12 +30,23 @@ Every emoji in the current folder should also be listed in `credits.csv` with th
 - `original_author`: The name of the person who created the first version of the emoji
 - `date_of_creation`: The date the first version of the emoji was created
 
-# Versions Data
+## Versions Data
 Every emoji in the old folder should also be listed in `versions.csv` with the following information:
 - `name`: The exact name of the emoji file, without the file extension
 - `version`: The version number of the emoji
 - `date_of_creation`: The date the version of the emoji was created
 - `author`: The name of the person who created this version of the emoji
+
+## Validation
+
+To ensure that your changes are valid, you can run the validation script like so:
+1. install node.js
+2. change to the `validation` directory
+3. run `npm install`
+4. run `npm start` to run the validation
+5. The console will tell you if the validation passed or failed
+
+If you can't / won't run the validation script, it will be automatically run when you make a pull request. This validation must pass before your pull request is accepted.
 
 # License
 

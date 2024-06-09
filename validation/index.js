@@ -87,7 +87,6 @@ async function parseCsv (path) {
 	const headers = lines[0].split(',');
 
 	let outputObject = {}
-
 	for (let i = 1; i < lines.length; i++) {
 		const obj = {};
 		const currentLine = lines[i].split(',');
@@ -98,8 +97,8 @@ async function parseCsv (path) {
 
 		outputObject[obj['name']] = obj;
 	}
-
-	console.log(outputObject);
-
 	return outputObject;
 }
+
+if (process.exitCode) console.error('\nRESULT: ❌ validation failed');
+else console.log('\nRESULT: ✔️ validation passed');
