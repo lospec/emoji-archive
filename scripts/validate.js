@@ -11,7 +11,7 @@ const OLD_EMOJI_FILES = await fsp.readdir(OLD_EMOJIS_PATH);
 const EMOJI_PALETTE = await fetchEmojiPaltte();
 
 
-console.log("checking current emojis...");
+console.log("\nchecking current emojis...");
 
 for (const emojiFileName of CURRENT_EMOJI_FILES) {
 	let emojiTrueName = emojiFileName.split('.')[0];
@@ -19,15 +19,16 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 
 	if (!/^[a-z]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
 
-	let credit = EMOJI_CREDITS[emojiTrueName];
+
+	let credit = EMOJI_CREDITS[emojiTrueName+"_v1"];
 	if (credit) {
-		if (!credit.original_author || credit.original_author.length == 0) errors.push('missing original_author');
+		let latestVersion = 1;
+		while (EMOJI_CREDITS[emojiTrueName+"_v"+(latestVersion+1)]) latestVersion++;
+		credit = EMOJI_CREDITS[emojiTrueName+"_v"+latestVersion];
 
-		if (!credit.created_on || credit.created_on.length == 0) errors.push('missing created_on date');
-		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.created_on)) errors.push('created_on date is not in yyyy-mm-dd format');
-
-		if (!credit.modified_on || credit.modified_on.length == 0) errors.push('missing modified_on date');
-		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.modified_on)) errors.push('modified_on date is not in yyyy-mm-dd format');
+		if (!credit.author || credit.author.length == 0) errors.push('missing original_author');
+		if (!credit.date || credit.date.length == 0) errors.push('missing date');
+		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.date)) errors.push('date is not in yyyy-mm-dd format');
 	} else
 		errors.push('missing credit');
 
@@ -58,6 +59,49 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 	}
 }
 
+
+console.log("\nchecking old emojis...");
+
+for (const emojiFileName of OLD_EMOJI_FILES) {
+	let emojiFullName = emojiFileName.split('.')[0];
+	let emojiTrueName = emojiFullName.split('_')[0];
+	let emojiVersion = emojiFullName.split('_')[1].replace('v', '');
+	let errors = [];
+
+	if (!/^[a-z]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
+	if (!/^\d+$/.test(emojiVersion)) errors.push('version "'+emojiVersion+'" is not a number');
+
+	let version = EMOJI_CREDITS[emojiFullName];
+	if (version) {
+		
+		if (version.version > 1){
+			let previousVersion = emojiTrueName+'_v'+(version.version-1) + '.png';
+			if (!OLD_EMOJI_FILES.includes(previousVersion)) errors.push('previous version (v'+(version.version-1)+') does not exist');
+		}
+
+		if (!version.author || version.author.length == 0) errors.push('missing author');
+
+		if (!version.date || version.date.length == 0) errors.push('missing date');
+		else if (!/^\d{4}-\d{2}-\d{2}$/.test(version.date)) errors.push('date is not in yyyy-mm-dd format');
+
+	} else
+		errors.push('missing version info');
+
+	if (!CURRENT_EMOJI_FILES.includes(emojiTrueName+'.png')) errors.push('corresponding current emoji not found');
+
+	if (!emojiFileName.includes('.png')) errors.push('file extension is not .png');
+
+	if (errors.length == 0) console.log('✔️ current/'+emojiFileName);
+	else {
+		//loop through errors and print out each one
+		errors.forEach((err) => {
+			console.error('❌ current/'+emojiFileName+' - '+err);
+		});
+		process.exitCode = 1;
+	}
+}
+
+
 function ensureEmojiOnlyUsesPaletteColors (png) {
 	const illegalColors = [];
 
@@ -86,7 +130,6 @@ async function fetchEmojiPaltte () {
 async function parseCsv (path) {
 	const csv = await fsp.readFile(path, 'utf-8');
 	const lines = csv.split(/\r?\n/);
-	const result = [];
 	const headers = lines[0].split(',');
 
 	let outputObject = {}
@@ -98,8 +141,9 @@ async function parseCsv (path) {
 			obj[headers[j]] = currentLine[j];
 		}
 
-		outputObject[obj['name']] = obj;
+		outputObject[obj['name']+'_v'+obj['version']] = obj;
 	}
+
 	return outputObject;
 }
 
