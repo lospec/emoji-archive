@@ -5,5 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm start
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./emoji-archive/validation
+      - name: Run Validation
+        run: npm start
+        working-directory: ./emoji-archive/validation
