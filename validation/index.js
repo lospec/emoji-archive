@@ -6,6 +6,7 @@ const CURRENT_EMOJIS_PATH = '../current';
 const OLD_EMOJIS_PATH = '../old';
 
 const CURRENT_EMOJI_FILES = await fsp.readdir(CURRENT_EMOJIS_PATH);
+const EMOJI_CREDITS = await parseCsv('../credits.csv');
 const OLD_EMOJI_FILES = await fsp.readdir(OLD_EMOJIS_PATH);
 const EMOJI_PALETTE = await fetchEmojiPaltte();
 
@@ -18,6 +19,15 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 
 	if (!/^[a-z]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
 
+	let credit = EMOJI_CREDITS[emojiTrueName];
+	if (credit) {
+		if (!credit.original_author || credit.original_author.length == 0) errors.push('missing original_author');
+		//make sure date matches yyyy-mm-dd
+		if (!credit.date_of_creation || credit.date_of_creation.length == 0) errors.push('missing date_of_creation');
+		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.date_of_creation)) errors.push('date is not in yyyy-mm-dd format');
+	} else
+		errors.push('missing credit');
+
 	if (emojiFileName.includes('.png')) {
 		try {
 			const currentImage = await fsp.readFile(`${CURRENT_EMOJIS_PATH}/${emojiFileName}`);
@@ -26,6 +36,7 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 			if (png.width !== 16) errors.push('image width is '+png.width+' instead of 16');
 			if (png.height !== 16) errors.push('image height is '+png.height+' instead of 16');
 			try {ensureEmojiOnlyUsesPaletteColors(png)} catch (err) {errors.push(err)}
+
 
 		} catch (err) {
 			errors.push('failed to load png: '+err);
@@ -67,4 +78,28 @@ async function fetchEmojiPaltte () {
 	const response = await fetch('https://lospec.com/palette-list/lospec-emoji.json');
 	const data = await response.json();
 	return data.colors;
+}
+
+async function parseCsv (path) {
+	const csv = await fsp.readFile(path, 'utf-8');
+	const lines = csv.split(/\r?\n/);
+	const result = [];
+	const headers = lines[0].split(',');
+
+	let outputObject = {}
+
+	for (let i = 1; i < lines.length; i++) {
+		const obj = {};
+		const currentLine = lines[i].split(',');
+
+		for (let j = 0; j < headers.length; j++) {
+			obj[headers[j]] = currentLine[j];
+		}
+
+		outputObject[obj['name']] = obj;
+	}
+
+	console.log(outputObject);
+
+	return outputObject;
 }
