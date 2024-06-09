@@ -1,12 +1,12 @@
 {
   "name": "lospec-emoji-archive-validation",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "validate.js",
   "dependencies": {
     "pngjs": "^7.0.0"
   },
   "scripts": {
-	"start": "node index.js"
+	"validate": "node validate.js"
   },
   "type": "module"
 }

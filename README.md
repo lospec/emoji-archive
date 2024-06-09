@@ -41,9 +41,9 @@ Every emoji in the old folder should also be listed in `versions.csv` with the f
 
 To ensure that your changes are valid, you can run the validation script like so:
 1. install node.js
-2. change to the `validation` directory
+2. change to the `scripts` directory
 3. run `npm install`
-4. run `npm start` to run the validation
+4. run `npm run validate` to run the validation
 5. The console will tell you if the validation passed or failed
 
 If you can't / won't run the validation script, it will be automatically run when you make a pull request. This validation must pass before your pull request is accepted.
