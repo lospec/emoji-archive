@@ -7,6 +7,10 @@ import { ensureEmojiOnlyUsesPaletteColors } from './util/check-emoji-colors.js';
 const CURRENT_EMOJIS_PATH = '../current';
 const OLD_EMOJIS_PATH = '../old';
 
+
+//import data/discord-emoji-list.json
+
+const DISCORD_EMOJI_LIST = JSON.parse(await fsp.readFile('./data/discord-emoji-list.json', 'utf-8'));
 const CURRENT_EMOJI_FILES = await fsp.readdir(CURRENT_EMOJIS_PATH);
 const EMOJI_CREDITS = await parseCsv('../credits.csv');
 const OLD_EMOJI_FILES = await fsp.readdir(OLD_EMOJIS_PATH);
@@ -18,7 +22,7 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 	let errors = [];
 
 	if (!/^[a-z]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
-
+	if (DISCORD_EMOJI_LIST.includes(emojiTrueName)) errors.push('emoji name already used by discord');
 
 	let credit = EMOJI_CREDITS[emojiTrueName+"_v1"];
 	if (credit) {
