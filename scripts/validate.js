@@ -14,7 +14,7 @@ const DISCORD_EMOJI_LIST = JSON.parse(await fsp.readFile('./data/discord-emoji-l
 const CURRENT_EMOJI_FILES = await fsp.readdir(CURRENT_EMOJIS_PATH);
 const EMOJI_CREDITS = await parseCsv('../credits.csv');
 const OLD_EMOJI_FILES = await fsp.readdir(OLD_EMOJIS_PATH);
-
+const CATEGORIES = (await fsp.readFile('./data/categories.csv', 'utf-8')).split(',');
 console.log('\nvalidating credits.csv...');
 
 //loop through all emojis in credits.csv, make sure each one is either the same as the one before it with the version increased by 1, or comes after the one before it alphabetically
@@ -23,14 +23,23 @@ let lastVersion = 0;
 for (const emoji in EMOJI_CREDITS) {
 	if (lastEmoji) {
 		let version = parseInt(emoji.split('_')[1].replace('v', ''));
-		if (version > 1 && version !== lastVersion+1) {
-			console.error('❌ '+emoji+' - bad version, should come after '+lastEmoji);
-			process.exitCode = 1;
+		if (version > 1) {
+			if (version !== lastVersion+1) {
+				console.error('❌ '+emoji+' - bad version, should come after '+lastEmoji);
+				process.exitCode = 1;
+			}
+			if (EMOJI_CREDITS[emoji].category !== EMOJI_CREDITS[lastEmoji].category) {
+				console.error('❌ '+emoji+' - doesn\'t match category of previous version');
+				process.exitCode = 1;
+			}
 		}
-		else if (emoji !== lastEmoji && emoji < lastEmoji) {
-			console.error('❌ '+emoji+' - should come before '+lastEmoji+ ' alphabetically');
-			process.exitCode = 1;
+		else if (emoji !== lastEmoji) {
+			if (emoji < lastEmoji) {
+				console.error('❌ '+emoji+' - should come before '+lastEmoji+ ' alphabetically');
+				process.exitCode = 1;
+			}
 		}
+
 		lastVersion = version;
 	}
 	lastEmoji = emoji;
@@ -54,6 +63,10 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 
 		if (!credit.author || credit.author.length == 0) errors.push('missing original_author');
 		if (!credit.date || credit.date.length == 0) errors.push('missing date');
+
+		if (!credit.category || credit.category.length == 0) errors.push('missing category');
+		else if (!CATEGORIES.includes(credit.category)) errors.push('invalid category "'+credit.category+'")');
+
 		else if (!/^\d{4}-\d{2}-\d{2}$/.test(credit.date)) errors.push('date is not in yyyy-mm-dd format');
 	} else
 		errors.push('missing credit');
