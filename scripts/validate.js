@@ -3,6 +3,7 @@ import { PNG } from 'pngjs';
 
 import { parseCsv } from './util/parse-csv.js';
 import { ensureEmojiOnlyUsesPaletteColors } from './util/check-emoji-colors.js';
+import { comesFirstAlphabetically } from './util/comes-first-alphabetically.js';
 
 const CURRENT_EMOJIS_PATH = '../current';
 const OLD_EMOJIS_PATH = '../old';
@@ -34,7 +35,7 @@ for (const emoji in EMOJI_CREDITS) {
 			}
 		}
 		else if (emoji !== lastEmoji) {
-			if (emoji < lastEmoji) {
+			if (comesFirstAlphabetically(EMOJI_CREDITS[emoji].name, EMOJI_CREDITS[lastEmoji].name)) {
 				console.error('❌ '+emoji+' - should come before '+lastEmoji+ ' alphabetically');
 				process.exitCode = 1;
 			}
@@ -46,13 +47,14 @@ for (const emoji in EMOJI_CREDITS) {
 }
 
 
+
 console.log("\nchecking current emojis...");
 
 for (const emojiFileName of CURRENT_EMOJI_FILES) {
 	let emojiTrueName = emojiFileName.split('.')[0];
 	let errors = [];
 
-	if (!/^[a-z]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
+	if (!/^[a-z0-9]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
 	if (DISCORD_EMOJI_LIST.includes(emojiTrueName)) errors.push('emoji name already used by discord');
 
 	let credit = EMOJI_CREDITS[emojiTrueName+"_v1"];
@@ -104,7 +106,7 @@ for (const emojiFileName of OLD_EMOJI_FILES) {
 	let emojiVersion = emojiFullName.split('_')[1].replace('v', '');
 	let errors = [];
 
-	if (!/^[a-z]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
+	if (!/^[a-z0-9]+$/.test(emojiTrueName)) errors.push('name contains invalid characters');
 	if (!/^\d+$/.test(emojiVersion)) errors.push('version "'+emojiVersion+'" is not a number');
 
 	let version = EMOJI_CREDITS[emojiFullName];
