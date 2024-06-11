@@ -8,7 +8,8 @@
   "scripts": {
 	"validate": "node validate.js",
 	"quantize": "node quantize.js",
-	"scale": "node scale.js 4"
+	"scale": "node scale.js 4",
+	"compile": "node compile.js"
   },
   "type": "module"
 }

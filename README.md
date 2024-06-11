@@ -48,6 +48,25 @@ To ensure that your changes are valid, you can run the validation script like so
 
 If you can't / won't run the validation script, it will be automatically run when you make a pull request. This validation must pass before your pull request is accepted.
 
+# Scripts 
+
+In the scripts folder are a few scripts that may be useful
+
+To run a script you can either run them through NPM, with `npm run <script name>`, or you can run them directly with node, with `node <script name>`.
+Some scripts have command line arguments.
+
+## validate.js
+Validates that all the emojis and the credits.cvs file are correctly formatted. This script is run automatically when you make a pull request.
+
+## quantize.js
+This checks every current emoji to see if they fit the palette. If they don't fit the palette, all offending colors will be replaced with the closest one in the palette, and will be saved to the `_quantized` folder on the root. Once quantized you should check if the emoji looks good, then move it to the current folder, replacing the old emoji.
+
+## scale.js
+This scales all emojis in the current folder, then saves them to the `_scaled` folder on the root. By default it scales them to 4x, which is ideal for discord, but you can change the scale by passing in the desired scale as the sole argument, e.g. `node scale.js 2` will scale the emojis to 2x.
+
+## compile.js
+This script compiles all the emojis in the current folder into a single image, then saves it to the root as `_compilation/compiled.png`. By default it compiles them into a grid in order with no margins at 1x, but has many arguments that can be set to change how it generates. To see all the options run `node compile.js -help`.
+
 # License
 
 All rights reserved.
