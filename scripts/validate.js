@@ -15,6 +15,28 @@ const CURRENT_EMOJI_FILES = await fsp.readdir(CURRENT_EMOJIS_PATH);
 const EMOJI_CREDITS = await parseCsv('../credits.csv');
 const OLD_EMOJI_FILES = await fsp.readdir(OLD_EMOJIS_PATH);
 
+console.log('\nvalidating credits.csv...');
+
+//loop through all emojis in credits.csv, make sure each one is either the same as the one before it with the version increased by 1, or comes after the one before it alphabetically
+let lastEmoji = '';
+let lastVersion = 0;
+for (const emoji in EMOJI_CREDITS) {
+	if (lastEmoji) {
+		let version = parseInt(emoji.split('_')[1].replace('v', ''));
+		if (version > 1 && version !== lastVersion+1) {
+			console.error('❌ '+emoji+' - bad version, should come after '+lastEmoji);
+			process.exitCode = 1;
+		}
+		else if (emoji !== lastEmoji && emoji < lastEmoji) {
+			console.error('❌ '+emoji+' - should come before '+lastEmoji+ ' alphabetically');
+			process.exitCode = 1;
+		}
+		lastVersion = version;
+	}
+	lastEmoji = emoji;
+}
+
+
 console.log("\nchecking current emojis...");
 
 for (const emojiFileName of CURRENT_EMOJI_FILES) {
@@ -92,9 +114,9 @@ for (const emojiFileName of OLD_EMOJI_FILES) {
 
 	if (!emojiFileName.includes('.png')) errors.push('file extension is not .png');
 
-	if (errors.length == 0) console.log('✔️ current/'+emojiFileName);
+	if (errors.length == 0) console.log('✔️ old/'+emojiFileName);
 	else {
-		errors.forEach((err) => {console.error('❌ current/'+emojiFileName+' - '+err);});
+		errors.forEach((err) => {console.error('❌ old/'+emojiFileName+' - '+err);});
 		process.exitCode = 1;
 	}
 }
