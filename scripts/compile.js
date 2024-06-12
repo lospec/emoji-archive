@@ -1,10 +1,12 @@
 import fsp from 'fs/promises';
 import { PNG } from 'pngjs';
+import { parseCsv } from './util/parse-csv.js';
 
 const START_TIME = Date.now();
 
 const CURRENT_EMOJIS_PATH = '../current';
 var CURRENT_EMOJI_FILES = await fsp.readdir(CURRENT_EMOJIS_PATH);
+const EMOJI_CREDITS = await parseCsv('../credits.csv');
 
 const OUTPUT_PATH = '../_compilation';
 try {await fsp.access(OUTPUT_PATH);} 
@@ -23,6 +25,7 @@ if (args.indexOf('-h') !== -1 || args.indexOf('-help') !== -1) {
 	console.log('-j or -jitter: randomize the position of emojis by up to this many pixels');
 	console.log('-r or -repeat: place every emoji this many times');
 	console.log('-z or -zoom: integer to scale up the result by');
+	console.log('-g or -categories: a comma separated list of categories to include (defaults to all)');
 	process.exit(0);
 }
 
@@ -33,6 +36,20 @@ let repeat = 0;
 let shuffle = false;
 let jitter = 0;
 let zoom = 1;
+let categories = ['all'];
+
+
+ifArgumentSpecified('-g', '-categories', (value) => {
+	if (!value) throw new Error('Categories value must be a string')
+	if (value === 'all') return;
+	categories = value.split(',');
+	CURRENT_EMOJI_FILES = CURRENT_EMOJI_FILES.filter((emoji) => {
+		let emojiTrueName = emoji.split('.')[0];
+		let emojiData = EMOJI_CREDITS[emojiTrueName+'_v1'];
+		return categories.includes(emojiData.category);
+	});
+});
+
 
 ifArgumentSpecified('-r', '-repeat', (value) => {
 	value = parseInt(value);
@@ -50,6 +67,7 @@ ifArgumentSpecified('-c', '-columns', (value) => {
 	if (isNaN(value)) throw new Error('Columns value must be a number')
 	columns = value;
 }, () => {
+	console.log('columns index not found');
 	columns = Math.floor(Math.sqrt(CURRENT_EMOJI_FILES.length));
 });
 
@@ -113,12 +131,15 @@ console.log("repeat: ", repeat);
 console.log("zoom: ", zoom);
 console.log("width: ", width);
 console.log("height: ", height);
+console.log("categories: ", categories);
 
 let png = new PNG({width: width, height: height});
 
 //load all emojis
 for (let i = 0; i < CURRENT_EMOJI_FILES.length; i++) {
 	let emojiFileName = CURRENT_EMOJI_FILES[i];
+	let emojiTrueName = emojiFileName.split('.')[0];
+	let emojiData = EMOJI_CREDITS[emojiTrueName+'_v1'];
 	let currentImage = await fsp.readFile(`${CURRENT_EMOJIS_PATH}/${emojiFileName}`);
 	let pngData = PNG.sync.read(currentImage).data;
 
