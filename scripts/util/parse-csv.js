@@ -7,8 +7,11 @@ export async function parseCsv (path) {
 
 	let outputObject = {}
 	for (let i = 1; i < lines.length; i++) {
+		const line = lines[i];
+		if (line.length == 0 && i == lines.length-1) continue;
+
 		const obj = {};
-		const currentLine = lines[i].split(',');
+		const currentLine = line.split(',');
 
 		for (let j = 0; j < headers.length; j++) {
 			obj[headers[j]] = currentLine[j];
