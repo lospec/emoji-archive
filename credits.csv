@@ -18,7 +18,6 @@ aliem,1,skeddles,2023-09-08,face
 allthepixels,1,JamesTDG,2023-09-08,character
 allthepixels,2,JamesTDG,2023-09-08,character
 alucard,1,JamesTDG,2023-10-18,face
-anchor,1,JamesTDG,2024-04-21,object
 animeglasses,1,braquen,2023-03-27,face
 antguy,1,JamesTDG,2023-09-08,face
 anubers,1,anubiarts,2024-06-19,member
@@ -39,8 +38,8 @@ barofsoap,1,JamesTDG,2024-04-21,object
 bashful,1,noxitive,2020-07-30,face
 bashful,2,skeddles,2020-07-30,face
 beee,1,JamesTDG,2024-04-21,animal
-beee2,1,JamesTDG,2024-04-21,animal
-beee3,1,JamesTDG,2024-04-21,animal
+beee,2,JamesTDG,2024-04-21,animal
+beee,3,JamesTDG,2024-04-21,animal
 beehive,1,JamesTDG,2024-04-21,object
 beerforfrank,1,skeddles,2021-02-09,object
 befuddled,1,skeddles,2023-05-18,face
@@ -63,6 +62,7 @@ blap,1,skeddles,2023-03-31,face
 bloodyshooty,1,JamesTDG,2024-04-21,object
 bluesapphire,1,JamesTDG,2024-04-21,object
 blushy,1,urablob,2023-04-17,face
+boatanchor,1,JamesTDG,2024-04-21,object
 boba,1,JamesTDG,2024-04-21,character
 bomber,1,steelsoldier,2024-06-01,object
 bonk,1,skeddles,2020-07-13,object
@@ -98,7 +98,7 @@ clucken,1,JamesTDG,2024-04-21,animal
 coconutnut,1,JamesTDG,2024-04-21,object
 colors,1,skeddles,2019-03-12,face
 commandervideo,1,JamesTDG,2023-12-30,character
-commies,1,jamestdg,2023-10-18,object
+commies,1,JamesTDG,2023-10-18,object
 commiesalt,1,JamesTDG,2023-10-18,object
 confusion,1,noxitive,2020-07-30,smallface
 confusion,2,pureasbestos,2024-06-19,smallface
@@ -118,7 +118,7 @@ cursed,1,noxitive,2020-10-24,face
 cursed,2,noxitive,2021-06-17,face
 cute,1,skeddles,2019-03-14,face
 cyclops,1,bren,2020-12-17,face
-cyclopsjames,1,JamesTDG,2023-09-08,face
+cyclopsmode,1,JamesTDG,2023-09-08,face
 dabmeup,1,skeddles,2021-06-25,face
 dame,1,JamesTDG,2024-04-21,face
 damoon,1,JamesTDG,2024-04-21,object
@@ -141,6 +141,7 @@ dinn,1,JamesTDG,2024-04-21,character
 disgruntled,1,skeddles,2023-05-18,face
 disturbed,1,skeddles,2019-03-10,face
 ditto,1,skeddles,2020-05-23,character
+djinn,1,JamesTDG,2023-10-18,face
 doge,1,JamesTDG,2023-09-08,character
 doingaconcern,1,JamesTDG,2023-09-08,face
 donny,1,JamesTDG,2023-10-18,character
@@ -170,7 +171,8 @@ evilmoment,1,isa,2021-06-18,face
 exasperation,1,skeddles,2023-05-18,face
 fading,1,skeddles,2023-09-08,face
 fancypants,1,JamesTDG,2023-12-30,character
-farmer,1,JamesTDG,2024-04-21,face
+farmhand,1,JamesTDG,2024-04-21,face
+fckyea,1,JamesTDG,2023-09-08,face
 flanndor,1,skeddles,2023-05-18,member
 flare,1,braquen,2020-07-30,face
 flare,2,braquen,2020-07-30,face
@@ -185,12 +187,11 @@ frown,1,skeddles,2019-03-10,face
 fruitytower,1,JamesTDG,2023-12-30,character
 gambler,1,JamesTDG,2024-04-21,face
 gaze,1,reverie,2020-10-25,face
-genie,1,JamesTDG,2023-10-18,face
 geologist,1,JamesTDG,2024-04-21,face
-ghostfact,1,JamesTDG,2023-10-18,face
+ghostface,1,JamesTDG,2023-10-18,face
 glee,1,skeddles,2021-04-12,face
 glitch,1,skeddles,2021-05-28,face
-goblin,1,JamesTDG,2023-09-08,face
+goblinmode,1,JamesTDG,2023-09-08,face
 goldarrow,1,JamesTDG,2024-04-21,object
 goldarrowalt,1,JamesTDG,2024-04-21,object
 goldbomb,1,JamesTDG,2024-04-21,object
@@ -244,7 +245,7 @@ iamironman,1,JamesTDG,2023-10-18,face
 illuminati,1,JamesTDG,2023-10-18,object
 imacube,1,JamesTDG,2023-09-08,face
 imamummy,1,JamesTDG,2023-10-18,face
-imp,1,JamesTDG,2023-09-08,face
+impmode,1,JamesTDG,2023-09-08,face
 infectedhasmat,1,JamesTDG,2023-12-30,character
 issaac,1,JamesTDG,2023-12-30,character
 itsapear,1,JamesTDG,2024-04-21,object
@@ -253,8 +254,8 @@ jackolantern,1,JamesTDG,2023-10-18,object
 jamesmay,1,JamesTDG,2024-04-21,object
 jamestdg,1,JamesTDG,2023-09-08,character
 jason,1,JamesTDG,2023-10-18,face
-jellyfishalt,1,JamesTDG,2024-04-21,animal
 jellyfishy,1,JamesTDG,2024-04-21,animal
+jellyfishyalt,1,JamesTDG,2024-04-21,animal
 jester,1,JamesTDG,2024-04-21,face
 jibby,1,skeddles,2023-09-08,member
 jimface,1,skeddles,2023-03-28,face
@@ -269,7 +270,7 @@ legs,1,reverie,2020-10-25,bodypart
 lem,1,isa,2021-06-25,object
 lem,2,skeddles,2021-06-25,object
 lenny,1,JamesTDG,2023-10-18,face
-leo,1,JamesTDG,2023-10-18,character
+leonardo,1,JamesTDG,2023-10-18,character
 letsfrickinggo,1,layzee,2021-06-17,face
 letsfrickinggo,2,noxitive,2021-06-17,face
 licky,1,noxitive,2020-07-30,face
@@ -386,7 +387,7 @@ purpleclam,1,JamesTDG,2024-04-21,animal
 puu,1,skeddles,2020-07-13,object
 qirl,1,qirlfriend,2023-05-17,member
 qirl,2,qirlfriend,2024-06-22,member
-quesionmark,1,JamesTDG,2024-04-21,symbol
+questionmark,1,JamesTDG,2024-04-21,symbol
 quote,1,JamesTDG,2023-12-30,character
 quotefriend,1,JamesTDG,2023-12-30,character
 raph,1,JamesTDG,2023-10-18,character
@@ -412,7 +413,7 @@ saurry,1,skeddles,2024-06-23,bodypart
 sayapple,1,JamesTDG,2024-04-21,object
 scrooge,1,JamesTDG,2024-04-21,character
 serene,1,skeddles,2023-09-23,face
-shakennotestirred,1,JamesTDG,2024-04-21,object
+shakennotstirred,1,JamesTDG,2024-04-21,object
 shinydiamond,1,JamesTDG,2024-04-21,object
 shinyp,1,JamesTDG,2024-04-21,object
 shinypearl,1,JamesTDG,2024-04-21,object
@@ -433,7 +434,6 @@ smiles,1,skeddles,2019-03-10,face
 smirkle,1,skeddles,2023-09-08,face
 smirky,1,skeddles,2023-05-18,face
 smug,1,skeddles,2019-08-27,face
-smug,1,JamesTDG,2023-09-08,face
 soapbubble,1,JamesTDG,2024-04-21,object
 sobby,1,skeddles,2019-03-10,face
 soblood,1,pongles,2020-10-19,face
@@ -450,7 +450,7 @@ sus,1,JamesTDG,2023-10-18,face
 sushicat,1,JamesTDG,2023-12-30,character
 swearz,1,skeddles,2023-09-08,face
 sweaty,1,skeddles,2019-03-10,face
-sweedisnchef,1,JamesTDG,2024-04-21,face
+sweedishchef,1,JamesTDG,2024-04-21,face
 sweetlo,1,noxitive,2020-07-30,face
 sweetlo,2,skeddles,2020-07-30,face
 tabbycat,1,JamesTDG,2024-04-21,animal
