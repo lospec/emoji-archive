@@ -4,6 +4,7 @@ name,version,author,date,category
 2d3,1,JamesTDG,2024-04-21,object
 2d6,1,JamesTDG,2024-04-21,object
 2xbot,1,JamesTDG,2023-10-18,character
+2xbotalt,1,JamesTDG,2023-10-18,character
 3d3,1,JamesTDG,2024-04-21,object
 3d6,1,JamesTDG,2024-04-21,object
 4d6,1,JamesTDG,2024-04-21,object
@@ -14,6 +15,7 @@ aaaaaaah,1,JamesTDG,2023-09-08,face
 aaahhh,1,reverie,2020-10-25,smallface
 ah,1,skeddles,2019-03-10,face
 aliem,1,skeddles,2023-09-08,face
+allthepixels,1,JamesTDG,2023-09-08,character
 allthepixels,2,JamesTDG,2023-09-08,character
 alucard,1,JamesTDG,2023-10-18,face
 anchor,1,JamesTDG,2024-04-21,object
@@ -37,8 +39,8 @@ barofsoap,1,JamesTDG,2024-04-21,object
 bashful,1,noxitive,2020-07-30,face
 bashful,2,skeddles,2020-07-30,face
 beee,1,JamesTDG,2024-04-21,animal
-beee2,2,JamesTDG,2024-04-21,animal
-beee3,3,JamesTDG,2024-04-21,animal
+beee2,1,JamesTDG,2024-04-21,animal
+beee3,1,JamesTDG,2024-04-21,animal
 beehive,1,JamesTDG,2024-04-21,object
 beerforfrank,1,skeddles,2021-02-09,object
 befuddled,1,skeddles,2023-05-18,face
@@ -51,12 +53,12 @@ bignose,1,JamesTDG,2023-09-08,face
 birb,1,skeddles,2020-07-13,member
 birb,2,skeddles,2024-06-09,member
 birbflu,1,qirlfriend,2023-12-14,membervariant
-blachhole,1,JamesTDG,2024-04-21,object
 blackcat,1,JamesTDG,2023-10-18,face
+blackhole,1,JamesTDG,2024-04-21,object
 blackholealt,1,JamesTDG,2024-04-21,object
 blackwidow,1,JamesTDG,2023-10-18,character
 blank,1,skeddles,2023-05-18,pixel
-blank,1,JamesTDG,2023-09-08,face
+blankface,1,JamesTDG,2023-09-08,face
 blap,1,skeddles,2023-03-31,face
 bloodyshooty,1,JamesTDG,2024-04-21,object
 bluesapphire,1,JamesTDG,2024-04-21,object
@@ -116,13 +118,14 @@ cursed,1,noxitive,2020-10-24,face
 cursed,2,noxitive,2021-06-17,face
 cute,1,skeddles,2019-03-14,face
 cyclops,1,bren,2020-12-17,face
-cyclops,1,JamesTDG,2023-09-08,face
+cyclopsjames,1,JamesTDG,2023-09-08,face
 dabmeup,1,skeddles,2021-06-25,face
 dame,1,JamesTDG,2024-04-21,face
 damoon,1,JamesTDG,2024-04-21,object
 dank,1,skeddles,2020-07-13,object
 deepseadiver,1,JamesTDG,2024-04-21,face
 deletthis,1,JamesTDG,2023-10-18,character
+deletthisalt,1,JamesTDG,2023-10-18,character
 depression,1,shidoengie,2021-03-09,face
 derp,1,skeddles,2019-08-27,face
 derpciek,1,JamesTDG,2023-10-18,character
@@ -171,6 +174,7 @@ farmer,1,JamesTDG,2024-04-21,face
 flanndor,1,skeddles,2023-05-18,member
 flare,1,braquen,2020-07-30,face
 flare,2,braquen,2020-07-30,face
+flare,3,braquen,2020-07-30,face
 flatten,1,beeno,2023-03-27,object
 flattered,1,skeddles,2019-08-27,face
 fool,1,reverie,2020-10-25,face
@@ -197,6 +201,7 @@ gomez,1,JamesTDG,2023-12-30,character
 goo,1,JamesTDG,2023-12-30,character
 gooball,1,JamesTDG,2023-12-30,character
 goodnight,1,skeddles,2019-08-27,face
+goodnight,2,skeddles,2019-08-27,face
 goosey,1,reverie,2020-12-04,animal
 grimreaper,1,JamesTDG,2023-10-18,face
 grinny,1,skeddles,2019-03-10,face
@@ -454,7 +459,6 @@ tamer,1,JamesTDG,2024-04-21,face
 tankman,1,JamesTDG,2023-12-30,character
 tdg,1,skeddles,2024-04-24,member
 teddy,1,JamesTDG,2023-10-18,face
-teletthisalt,1,JamesTDG,2023-10-18,face
 terratech,1,JamesTDG,2023-12-30,character
 testsubject,1,JamesTDG,2023-12-30,character
 thatssomeoddshtt,1,skeddles,2023-03-31,face
