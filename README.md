@@ -4,6 +4,9 @@ This is an archive of all current and past lospec emojis.
 
 # Contributing
 
+1. add image to `current` or `previous` folder
+2. update credits.csv to describe these changes
+
 All files must be formatted specifically as defined below:
 
 ## Image Format
@@ -27,15 +30,15 @@ Archived emojis may break the image requirements, as they could have been create
 ## Credits Data
 Every emoji in the current folder should also be listed in `credits.csv` with the following information:
 - `name`: The exact name of the emoji file, without the file extension
-- `original_author`: The name of the person who created the first version of the emoji
-- `date_of_creation`: The date the first version of the emoji was created
-
-## Versions Data
-Every emoji in the old folder should also be listed in `versions.csv` with the following information:
-- `name`: The exact name of the emoji file, without the file extension
-- `version`: The version number of the emoji
-- `date_of_creation`: The date the version of the emoji was created
+- `version`: integer describing which iteration of the emoji of this name has had (must be sequential)
 - `author`: The name of the person who created this version of the emoji
+- `date`: The date the first version of the emoji was created (in YYYY-MM-DD format)
+- `category`: The general group that this emoji fits into, as defined in `./scripts/data/categories.csv` 
+
+### Current / Old Versions
+The latest version of an emoji refers to the image placed in the current folder, where the filename matches the "name" field in the credits.
+
+All previous versions are placed into the `previous` folder, and the filename should have an `_` and the matching version number at the end.
 
 ## Validation
 
