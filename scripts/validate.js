@@ -18,7 +18,8 @@ const OLD_EMOJI_FILES = await fsp.readdir(OLD_EMOJIS_PATH);
 const CATEGORIES = (await fsp.readFile('./data/categories.csv', 'utf-8')).split(',');
 console.log('\nvalidating credits.csv...');
 
-//loop through all emojis in credits.csv, make sure each one is either the same as the one before it with the version increased by 1, or comes after the one before it alphabetically
+//loop through all emojis in credits.csv
+// make sure each one is either the same as the one before it with the version increased by 1, or comes after the one before it alphabetically
 let lastEmoji = '';
 let lastVersion = 0;
 for (const emoji in EMOJI_CREDITS) {
@@ -44,6 +45,23 @@ for (const emoji in EMOJI_CREDITS) {
 		lastVersion = version;
 	}
 	lastEmoji = emoji;
+
+	if (!EMOJI_CREDITS[emoji].name) {
+		console.error('❌ '+emoji+' - missing name');
+		process.exitCode = 1;
+	}
+	if (!EMOJI_CREDITS[emoji].author) {
+		console.error('❌ '+emoji+' - missing author');
+		process.exitCode = 1;
+	}
+	if (!EMOJI_CREDITS[emoji].date) {
+		console.error('❌ '+emoji+' - missing date');
+		process.exitCode = 1;
+	}
+	if (!EMOJI_CREDITS[emoji].category) {
+		console.error('❌ '+emoji+' - missing category');
+		process.exitCode = 1;
+	}
 }
 
 
@@ -138,3 +156,9 @@ for (const emojiFileName of OLD_EMOJI_FILES) {
 
 if (process.exitCode) console.error('\nRESULT: ❌ validation failed');
 else console.log('\nRESULT: ✔️ validation passed');
+
+
+function failValidation (message) {
+	console.error('❌ '+message);
+	process.exitCode = 1;
+}
