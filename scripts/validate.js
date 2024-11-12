@@ -18,52 +18,38 @@ const OLD_EMOJI_FILES = await fsp.readdir(OLD_EMOJIS_PATH);
 const CATEGORIES = (await fsp.readFile('./data/categories.csv', 'utf-8')).split(',');
 console.log('\nvalidating credits.csv...');
 
-//loop through all emojis in credits.csv
+// loop through all emojis in credits.csv
 // make sure each one is either the same as the one before it with the version increased by 1, or comes after the one before it alphabetically
+// make sure each one has all the required fields
 let lastEmoji = '';
 let lastVersion = 0;
 for (const emoji in EMOJI_CREDITS) {
 	if (lastEmoji) {
 		let version = parseInt(emoji.split('_')[1].replace('v', ''));
 		if (version > 1) {
-			if (version !== lastVersion+1) {
-				console.error('❌ '+emoji+' - bad version, should come after '+lastEmoji);
-				process.exitCode = 1;
-			}
-			if (EMOJI_CREDITS[emoji].category !== EMOJI_CREDITS[lastEmoji].category) {
-				console.error('❌ '+emoji+' - doesn\'t match category of previous version');
-				process.exitCode = 1;
-			}
+			if (version !== lastVersion+1) 
+				failValidation('bad version, should come after '+lastEmoji);
+			if (EMOJI_CREDITS[emoji].category !== EMOJI_CREDITS[lastEmoji].category)
+				failValidation(emoji+' - doesn\'t match category of previous version');
 		}
 		else if (emoji !== lastEmoji) {
-			if (comesFirstAlphabetically(EMOJI_CREDITS[emoji].name, EMOJI_CREDITS[lastEmoji].name)) {
-				console.error('❌ '+emoji+' - should come before '+lastEmoji+ ' alphabetically');
-				process.exitCode = 1;
-			}
+			if (comesFirstAlphabetically(EMOJI_CREDITS[emoji].name, EMOJI_CREDITS[lastEmoji].name))
+				failValidation(emoji+' - should come before '+lastEmoji+ ' alphabetically');
 		}
 
 		lastVersion = version;
 	}
 	lastEmoji = emoji;
 
-	if (!EMOJI_CREDITS[emoji].name) {
-		console.error('❌ '+emoji+' - missing name');
-		process.exitCode = 1;
-	}
-	if (!EMOJI_CREDITS[emoji].author) {
-		console.error('❌ '+emoji+' - missing author');
-		process.exitCode = 1;
-	}
-	if (!EMOJI_CREDITS[emoji].date) {
-		console.error('❌ '+emoji+' - missing date');
-		process.exitCode = 1;
-	}
-	if (!EMOJI_CREDITS[emoji].category) {
-		console.error('❌ '+emoji+' - missing category');
-		process.exitCode = 1;
-	}
+	if (!EMOJI_CREDITS[emoji].name)
+		failValidation(emoji+' - missing name');
+	if (!EMOJI_CREDITS[emoji].author)
+		failValidation(emoji+' - missing author');
+	if (!EMOJI_CREDITS[emoji].date)
+		failValidation(emoji+' - missing date');
+	if (!EMOJI_CREDITS[emoji].category)
+		failValidation(emoji+' - missing category');
 }
-
 
 
 console.log("\nchecking current emojis...");
@@ -107,12 +93,8 @@ for (const emojiFileName of CURRENT_EMOJI_FILES) {
 	}
 	else errors.push('file extension is not .png');
 
-
 	if (errors.length == 0) console.log('✔️ current/'+emojiFileName);
-	else {
-		errors.forEach((err) => {console.error('❌ current/'+emojiFileName+' - '+err);});
-		process.exitCode = 1;
-	}
+	else errors.forEach((err) => {failValidation('current/'+emojiFileName+' - '+err);});
 }
 
 
@@ -148,15 +130,11 @@ for (const emojiFileName of OLD_EMOJI_FILES) {
 	if (!emojiFileName.includes('.png')) errors.push('file extension is not .png');
 
 	if (errors.length == 0) console.log('✔️ old/'+emojiFileName);
-	else {
-		errors.forEach((err) => {console.error('❌ old/'+emojiFileName+' - '+err);});
-		process.exitCode = 1;
-	}
+	else errors.forEach((err) => {failValidation('old/'+emojiFileName+' - '+err);});
 }
 
 if (process.exitCode) console.error('\nRESULT: ❌ validation failed');
 else console.log('\nRESULT: ✔️ validation passed');
-
 
 function failValidation (message) {
 	console.error('❌ '+message);
