@@ -7,7 +7,7 @@ import { comesFirstAlphabetically } from './util/comes-first-alphabetically.js';
 
 const CURRENT_EMOJIS_PATH = '../current';
 const OLD_EMOJIS_PATH = '../old';
-
+const NUMBER_OF_COLUMNS_IN_CREDITS = 5;
 
 //import data/discord-emoji-list.json
 
@@ -49,6 +49,10 @@ for (const emoji in EMOJI_CREDITS) {
 		failValidation(emoji+' - missing date');
 	if (!EMOJI_CREDITS[emoji].category)
 		failValidation(emoji+' - missing category');
+	if (EMOJI_CREDITS[emoji]._columns < NUMBER_OF_COLUMNS_IN_CREDITS)
+		failValidation(emoji+' - too few columns defined');
+	if (EMOJI_CREDITS[emoji]._columns > NUMBER_OF_COLUMNS_IN_CREDITS)
+		failValidation(emoji+' - too many columns defined');
 }
 
 

@@ -13,6 +13,8 @@ export async function parseCsv (path) {
 		const obj = {};
 		const currentLine = line.split(',');
 
+		obj._columns = currentLine.length;
+
 		for (let j = 0; j < headers.length; j++) {
 			obj[headers[j]] = currentLine[j];
 		}
