@@ -1,5 +1,6 @@
 name,version,author,date,category
 aaahhh,1,reverie,2020-10-25,smallface
+acreature,1,birds_probably,2024-06-20,character
 ah,1,skeddles,2019-03-10,face
 ahh,1,starlane,2020-10-19,face
 aliem,1,skeddles,2023-09-08,face
@@ -37,6 +38,7 @@ bomber,1,steelsoldier,2024-06-01,object
 bonk,1,skeddles,2020-07-13,object
 boo,1,skeddles,2021-05-29,character
 brimbo,1,anubi,2022-09-18,character
+brimbokisser,1,birds_probably,2024-05-07,character
 bruh,1,sk3ll,2020-12-23,face
 bruh,2,isa,2021-06-23,face
 buff,1,sk3ll,2020-10-26,bodypart
@@ -181,6 +183,7 @@ mavishusking,1,skeddles,2024-06-26,membervariant
 meinkraft,1,timmylittle,2024-01-05,object
 menacing,1,grafxkid,2021-06-24,symbol
 miffed,1,skeddles,2019-03-10,face
+miku,1,birds_probably,2024-06-03,character
 mountainz,1,skeddles,2020-07-13,object
 mouthless,1,skeddles,2023-09-08,face
 mpreg,1,birds_probably,2024-05-29,character
@@ -209,6 +212,8 @@ pensivecowboy,1,pureasbestos,2021-06-24,face
 phrod,1,morfarius,2021-06-17,animal
 phrod,2,isa,2021-06-17,animal
 pikzel,1,skeddles,2023-05-30,symbol
+pineappleonpizza,1,birds_probably,2024-06-03,face
+pixelkisser,1,birds_probably,2024-05-06,character
 pizzi,1,skeddles,2021-03-10,object
 pleads,1,jibby,2023-11-17,face
 pog,1,braquen,2020-07-30,face
@@ -312,6 +317,8 @@ waitwhat,1,countmoriarty,2023-03-27,face
 warn,1,skeddles,2023-05-23,symbol
 waveleft,1,skeddles,2020-04-13,bodypart
 waveright,1,skeddles,2020-07-08,bodypart
+wheezing,1,birds_probably,2024-05-23,face
+whywouldyou,1,birds_probably,2024-06-03,face
 widesmile,1,skeddles,2019-03-11,face
 widesmiley,1,skeddles,2023-05-18,face
 wild,1,skeddles,2019-08-27,face
