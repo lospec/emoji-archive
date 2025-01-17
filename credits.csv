@@ -1,8 +1,4 @@
 name,version,author,date,category
-dimmadome,1,JamesTDG,character
-dimmahat,1,JamesTDG,object
-dimmataller,1,JamesTDG,object
-dimmatop,1,JamesTDG,object
 aaahhh,1,reverie,2020-10-25,smallface
 acreature,1,birds_probably,2024-06-20,character
 ah,1,skeddles,2019-03-10,face
@@ -88,6 +84,10 @@ derp,1,skeddles,2019-08-27,face
 devious,1,braquen,2023-03-19,face
 dewit,1,skeddles,2024-06-10,character
 diaggy,1,skeddles,2023-05-24,face
+dimmadome,1,2025-1-16,JamesTDG,character
+dimmahat,1,2025-1-16,JamesTDG,object
+dimmataller,1,2025-1-16,JamesTDG,object
+dimmatop,1,2025-1-16,JamesTDG,object
 disgruntled,1,skeddles,2023-05-18,face
 disturbed,1,skeddles,2019-03-10,face
 ditto,1,skeddles,2020-05-23,character
